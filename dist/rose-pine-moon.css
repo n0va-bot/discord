@@ -1,7 +1,7 @@
 /**
 * @name Rosé Pine Moon
 * @author Ardo
-* @version 4.3.2
+* @version 4.5.0
 * @description All natural pine, faux fur and a bit of soho vibes for the classy minimalist.
 * @source https://github.com/rose-pine/discord
 * @updateUrl https://github.com/rose-pine/discord/blob/rose-pine-moon.theme.css
@@ -11,10 +11,13 @@
 CONFIGURATION 📝‼️
 */
 
+
 :root {
     /* 1=False ; 0=True */
     --windows-hover: 1;
-    
+    --topbar-hidden: 1;
+
+
     --base: #232136;
     --surface: #2a273f;
     --overlay: #393552;
@@ -42,14 +45,15 @@ CONFIGURATION 📝‼️
 }
 
 /* Custom Logo Icon */
-.wrapper__6e9f8[aria-label="Direct Messages"] .childWrapper__6e9f8 svg {
-    display: none;
+.wrapper__6e9f8[aria-owns="guild-list-unread-dms"] .childWrapper__6e9f8 svg,
+.wrapper__6e9f8[data-list-item-id^="guildsnav___"] .childWrapper__6e9f8 svg {
+    display: none !important;
     /* Hide the original SVG */
 }
 
-.wrapper__6e9f8[aria-label="Direct Messages"] .childWrapper__6e9f8 {
+.wrapper__6e9f8[aria-owns="guild-list-unread-dms"] .childWrapper__6e9f8,
+.wrapper__6e9f8[data-list-item-id^="guildsnav___"] .childWrapper__6e9f8 {
     display: flex;
-    /* Ensure proper layout */
     align-items: center;
     justify-content: center;
     background-color: transparent !important;
@@ -57,10 +61,33 @@ CONFIGURATION 📝‼️
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 55px;
-    /* Match the original SVG size */
-    height: 55px;
+    width: 55px !important;
+    height: 55px !important;
 }
+
+/* Top left custom text */
+.bar_c38106::before {
+    content: "Rosé Pine Moon";
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    color: #ffffff77;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: var(--font-primary);
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+}
+
+.base__5e434,
+.content__5e434 {
+    background-color: var(--overlay);
+}
+
+
 /* ---------------------------- System Bar (Windows) ---------------------------- */
 
 /* Remove Server Name Icon from Top bar */
@@ -146,6 +173,22 @@ CONFIGURATION 📝‼️
 
 /* ---------------------------- Server List (Left Sidebar) ---------------------------- */
 
+.wrapper_ef3116.guilds__5e434 {
+    background-color: var(--overlay) !important;
+}
+.wrapper_ef3116.guilds__5e434 {
+    background-color: var(--overlay) !important;
+    margin-left: 12px !important;
+    margin-right: 10px !important;
+}
+
+
+.itemsContainer_ef3116 {
+    background-color: var(--overlay) !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--iris) !important;
+}
+
 /* Main BG */
 .guilds_c48ade {
     background-color: transparent !important;
@@ -208,6 +251,22 @@ CONFIGURATION 📝‼️
 .sidebarList_c48ade.sidebarListRounded_c48ade {
     background-color: var(--surface) !important;
 }
+.sidebarResizeHandle__5e434 {
+    background-color: var(--overlay) !important;
+}
+.scroller__629e4.thin_d125d2.scrollerBase_d125d2.fade_d125d2 {
+    background-color: var(--surface) !important;
+}
+.container_f37cb1.clickable_f37cb1 {
+    border-top-right-radius: 20px !important;
+}
+.sidebarList__5e434.sidebarListRounded__5e434 {
+    border: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+}
 
 .menu_c1e9c4 {
     /* Right click menu */
@@ -259,10 +318,20 @@ CONFIGURATION 📝‼️
     {
     color: var(--text) !important;
 }
-
+.panels__5e434 {
+    background-color: var(--surface) !important;
+    border: 1px solid color-mix(in srgb, var(--iris), transparent 70%) !important;
+    border-radius: 20px !important;
+}
+.sidebar__5e434:after {
+    background-color: var(--overlay) !important;
+}
 /* New message text */
 .channelInfo_c69b6d {
     color: var(--foam) !important;
+}
+.container__50387 {
+    background-color: var(--overlay) !important;
 }
 
 /* Make Read Channel Names duller */
@@ -292,6 +361,10 @@ CONFIGURATION 📝‼️
     color: var(--foam) !important;
 }
 
+.progressContainer__0d0f9 {
+    background-color: var(--highlightMed) !important;
+}
+
 /* ---------------------------- Main Chat Area ---------------------------- */
 
 .chatContent_f75fb0 {
@@ -299,10 +372,36 @@ CONFIGURATION 📝‼️
     background-color: var(--surface) !important;
     border-color: color-mix(in srgb, var(--foam), transparent 70%) !important;
 }
+.chat_f75fb0 {
+    padding-bottom: 10px !important;
+}
+.page__5e434 {
+    border: none !important;
+}
+.formWithLoadedChatInput_f75fb0:before {
+    background: transparent !important;
+}
 
 .subtitleContainer_f75fb0 {
     /* Channel title */
     color: var(--base) !important;
+}
+
+.sidebarResizeHandle__5e434 {
+    background-color: var(--overlay) !important;
+    display: none !important;
+}
+/* Remove the ugly gradient */
+.chatGradient__36d07.chatGradientBase__36d07,
+.chatGradient__36d07,
+.chatGradientBase__36d07 {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  mask: none !important;
+  pointer-events: none !important;
 }
 
 &.theme-midnight .content_f75fb0, &.theme-midnight .subtitleContainer_f75fb0 {
@@ -324,6 +423,9 @@ CONFIGURATION 📝‼️
     /* Hidden members in category */
     color: var(--surface) !important;
     background-color: var(--surface) !important;
+}
+.container__0f2e8.openOnHover__0f2e8 {
+    background-color: var(--overlay) !important;
 }
 
 /* Bot Tag */
@@ -427,6 +529,10 @@ path.unreadPillCapStroke__908e2 {
     background-color: var(--surface) !important;
     border-radius: 25px !important;
 }
+.container__01ae2 {
+    margin-bottom: 10px !important;
+    margin-right: 10px !important;
+}
 
 .container_faa96b.mainCard_f369db {
     background-color: var(--overlay) !important;
@@ -527,11 +633,10 @@ path.unreadPillCapStroke__908e2 {
     background-color: var(--surface) !important;
 }
 
-.container_f69538.embed_f69538 {
-    background-color: var(--surface) !important;
+/* Voice chat */
+.root_bfe55a {
+    background: var(--base)
 }
-
-
 
 
 
@@ -570,6 +675,15 @@ path.unreadPillCapStroke__908e2 {
     background-color: var(--overlay) !important;
 }
 
+.messagesPopout_e8b59c.thin_d125d2.scrollerBase_d125d2,
+.header_e8b59c,
+.footer_e8b59c {
+    background-color: var(--overlay) !important;
+}
+.messageGroupWrapper_e8b59c {
+    background-color: var(--surface);
+}
+
 .header__45690,
 .messagesPopoutWrap__45690 {
     background-color: var(--surface) !important;
@@ -597,8 +711,8 @@ path.unreadPillCapStroke__908e2 {
 .container_a45028 {
     background-color: transparent !important;
 }
-.createButton_d9c882 {
-    background-color: var(--iris) !important;
+.button_a22cb0.sm_a22cb0.primary_a22cb0.hasText_a22cb0 {
+    background-color: var(--foam) !important;
     color: var(--base) !important;
 }
 .closeIcon_d9c882 {
@@ -606,21 +720,6 @@ path.unreadPillCapStroke__908e2 {
 }
 .cta__9271d {
     color: var(--gold) !important;
-}
-
-
-.container__6764b {
-    background-color: var(--surface) !important;
-}
-.container_a45028 {
-    background-color: transparent !important;
-}
-.createButton_d9c882 {
-    background-color: var(--iris) !important;
-    color: var(--base) !important;
-}
-.closeIcon_d9c882 {
-    color: var(--love) !important;
 }
 
 
@@ -785,6 +884,10 @@ button[aria-label="User Settings"] .lottieIcon__5eb9b svg path {
     background-color: color-mix(in srgb, var(--foam), transparent 30%) !important;
 }
 
+.panel__5dec7.activityPanel__5e434 {
+    background-color: var(--surface) !important;
+    border-radius: 20px !important;
+}
 
 
 
@@ -860,6 +963,9 @@ button[aria-label="User Settings"] .lottieIcon__5eb9b svg path {
 
 /* Emoji */
 .emoji-picker-tab-panel,
+.header__8ef02,
+.header_fed6d3,
+.content_fed6d3,
 .contentWrapper__08434,
 .emojiPicker_c0e32c,
 .header_c0e32c,
@@ -1063,8 +1169,7 @@ button[aria-label="User Settings"] .lottieIcon__5eb9b svg path {
 
 
 /* Confirm Delete */
-.root__49fc1,
-.flex__7c0ba {
+.root__49fc1 {
     background-color: var(--overlay) !important;
 }
 
@@ -1086,16 +1191,6 @@ button[aria-label="User Settings"] .lottieIcon__5eb9b svg path {
 .container__55c99 {
     background-color: var(--overlay) !important;
 }
-
-.voiceFiltersPopout_e2f668{
-    background-color: var(--overlay) !important;
-    border-radius: 15px !important;
-}
-.voiceFiltersFooter_e2f668 {
-    background-color: var(--highlightLow) !important;
-    border-radius: 15px !important;
-}
-
 
 .voiceFiltersPopout_e2f668{
     background-color: var(--overlay) !important;
@@ -1270,11 +1365,9 @@ Credits:
         padding-top: var(--custom-guild-list-padding);
     }
 
-    .container__2637a
-
-    /* channel list inner */
-        {
+    .container__2637a {
         padding-bottom: 0;
+        margin-right: var(--gap);
     }
 
     .clickable_f37cb1,
